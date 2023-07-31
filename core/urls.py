@@ -4,11 +4,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    # path('api/inventory/', include('apps.inventory.urls')),
-    # path('api/users/', include('apps.users.urls')),
-    # path('api/finance/', include('apps.finance.urls')),
-    # # path('api/category/', include('apps.category.urls')),
+    path('api/inventory/', include('apps.inventory.urls')),
+    path('api/users/', include('apps.users.urls')),
+    path('api/finance/', include('apps.finance.urls')),
+    path('api/category/', include('apps.category.urls')),
     
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

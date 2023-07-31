@@ -120,25 +120,21 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:5500',
     'http://localhost:8000',
-    'http://44.201.29.87',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5500',
     'http://localhost:8000',
-    'http://44.201.29.87',
 ]
 
 if not DEBUG:
     CORS_ORIGIN_WHITELIST = [
         'https://juansoto10.github.io',
-        'http://44.201.29.87',
     ]
     
     CSRF_TRUSTED_ORIGINS = [
         'https://juansoto10.github.io',
-        'http://44.201.29.87',
     ]
 
 

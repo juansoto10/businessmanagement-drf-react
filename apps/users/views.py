@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404, render
 
-# Create your views here.
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -61,13 +60,10 @@ class CustomUserListView(APIView):
 class CustomUserDetailView(APIView):
     
     def get(self, request, username, format=None):
-        if CustomUser.objects.all().exists():
-            the_user = get_object_or_404(CustomUser, username=username)
-            serializer = CustomUserSerializer(the_user)
+        the_user = get_object_or_404(CustomUser, username=username)
+        serializer = CustomUserSerializer(the_user)
             
-            return Response({'user': serializer.data}, status=status.HTTP_200_OK)
-        
-        return Response({'message': 'The user does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'user': serializer.data}, status=status.HTTP_200_OK)
     
     
 ## External Person---
@@ -88,13 +84,11 @@ class ClientListView(APIView):
 class ClientDetailView(APIView):
     
     def get(self, request, person_uuid, format=None):
-        if Client.objects.all().exists():
-            client= get_object_or_404(Client, person_uuid=person_uuid)
-            serializer = ClientSerializer(client)
+        client = get_object_or_404(Client, person_uuid=person_uuid)
+        serializer = ClientSerializer(client)
             
-            return Response({'client': serializer.data}, status=status.HTTP_200_OK)
+        return Response({'client': serializer.data}, status=status.HTTP_200_OK)
         
-        return Response({'message': 'The client is not registered'}, status=status.HTTP_404_NOT_FOUND)
     
     
 ### Supplier
@@ -113,10 +107,7 @@ class SupplierListView(APIView):
 class SupplierDetailView(APIView):
     
     def get(self, request, person_uuid, format=None):
-        if Supplier.objects.all().exists():
-            supplier = get_object_or_404(Supplier, person_uuid=person_uuid)
-            serializer = SupplierSerializer(supplier)
+        supplier = get_object_or_404(Supplier, person_uuid=person_uuid)
+        serializer = SupplierSerializer(supplier)
             
-            return Response({'supplier': serializer.data}, status=status.HTTP_200_OK)
-        
-        return Response({'message': 'The supplier is not registered'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'supplier': serializer.data}, status=status.HTTP_200_OK)

@@ -1,9 +1,11 @@
-# from apps.category.serializers import ItemCategorySerializer, ProductCategorySerializer
 # from rest_framework.pagination import PageNumberPagination
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
+
 from .models import *
+from .serializers import *
 
 
 class ListItemCategoriesView(APIView):
@@ -35,8 +37,38 @@ class ListItemCategoriesView(APIView):
                     result.append(item)
                     
             return Response({'item_categories': result}, status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'No item categories found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        return Response({'error': 'No item categories found'}, status=status.HTTP_404_NOT_FOUND)
+        
+    def post(self, request, format=None):
+        serializer = ItemCategorySerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class ItemCategoryDetailView(APIView):
+
+    def get(self, request, category_id, format=None):
+        item_category = get_object_or_404(ItemCategory, id=category_id)
+        serializer = ItemCategorySerializer(item_category)
+        
+        return Response({'item category': serializer.data}, status=status.HTTP_200_OK)
+    
+    def patch(self, request, item_slug, format=None):
+        item_category = get_object_or_404(ItemCategory, slug=item_slug)
+        serializer = ItemCategorySerializer(item_category, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response({'item category updated': serializer.data}, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ListProductCategoriesView(APIView):
@@ -70,3 +102,34 @@ class ListProductCategoriesView(APIView):
             return Response({'product_categories': result}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'No product categories found'}, status=status.HTTP_404_NOT_FOUND)
+        
+    def post(self, request, format=None):
+        serializer = ProductCategorySerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class ProductCategoryDetailView(APIView):
+
+    def get(self, request, category_id, format=None):
+        product_category = get_object_or_404(ProductCategory, id=category_id)
+        serializer = ProductCategorySerializer(product_category)
+        
+        return Response({'product category': serializer.data}, status=status.HTTP_200_OK)
+    
+    def patch(self, request, category_id, format=None):
+        product_category = get_object_or_404(ProductCategory, id=category_id)
+        serializer = ProductCategorySerializer(product_category, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            
+            return Response({'product category updated': serializer.data}, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    

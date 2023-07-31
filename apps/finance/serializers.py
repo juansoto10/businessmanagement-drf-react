@@ -3,12 +3,15 @@ from .models import *
 
 from apps.inventory.serializers import ProductSerializer, ItemSerializer
 from .serializers import *
-from apps.users.serializers import CustomUserSerializer
+# from apps.users.serializers import CustomUserSerializer
+
+
+
+# CustomUserSerializer = lazy_import('.serializers', 'CustomUserSerializer', module='apps.users')
 
 
 class SaleSerializer(serializers.ModelSerializer):
-    
-    cashier = CustomUserSerializer()
+    cashier = serializers.SerializerMethodField()
     products = ProductSerializer(many=True)
 
     class Meta:
@@ -22,10 +25,31 @@ class SaleSerializer(serializers.ModelSerializer):
             SaleList.objects.create(sale=sale, **product_data)
         return sale
 
+    def get_cashier(self, obj):
+        # Acceder a los campos de User directamente, por ejemplo:
+        return obj.cashier.username
+    
+
+# class SaleSerializer(serializers.ModelSerializer):
+    
+#     cashier = CustomUserSerializer()
+#     products = ProductSerializer(many=True)
+
+#     class Meta:
+#         model = Sale
+#         fields = '__all__'
+
+#     def create(self, validated_data):
+#         products_data = validated_data.pop('products')
+#         sale = Sale.objects.create(**validated_data)
+#         for product_data in products_data:
+#             SaleList.objects.create(sale=sale, **product_data)
+#         return sale
+
 
 class QuotationSerializer(serializers.ModelSerializer):
     
-    quoting_person = CustomUserSerializer()
+    quoting_person = serializers.SerializerMethodField()
     products = ProductSerializer(many=True)
 
     class Meta:
@@ -38,11 +62,15 @@ class QuotationSerializer(serializers.ModelSerializer):
         for product_data in products_data:
             QuotationList.objects.create(quotation=quotation, **product_data)
         return quotation
+    
+    def get_quoting_person(self, obj):
+        # Acceder a los campos de User directamente, por ejemplo:
+        return obj.quoting_person.username
 
 
 class ItemPurchaseSerializer(serializers.ModelSerializer):
     
-    buyer = CustomUserSerializer()
+    buyer = serializers.SerializerMethodField()
     items = ItemSerializer(many=True)
 
     class Meta:
@@ -56,10 +84,14 @@ class ItemPurchaseSerializer(serializers.ModelSerializer):
             ItemPurchaseList.objects.create(purchase=purchase, **product_data)
         return purchase
     
+    def get_buyer(self, obj):
+        # Acceder a los campos de User directamente, por ejemplo:
+        return obj.buyer.username
+    
 
 class ProductPurchaseSerializer(serializers.ModelSerializer):
     
-    buyer = CustomUserSerializer()
+    buyer = serializers.SerializerMethodField()
     products = ProductSerializer(many=True)
 
     class Meta:
@@ -72,6 +104,10 @@ class ProductPurchaseSerializer(serializers.ModelSerializer):
         for product_data in products_data:
             ProductPurchaseList.objects.create(purchase=purchase, **product_data)
         return purchase
+    
+    def get_buyer(self, obj):
+        # Acceder a los campos de User directamente, por ejemplo:
+        return obj.buyer.username
 
 
 class CreditSerializer(serializers.ModelSerializer):
@@ -93,7 +129,7 @@ class SaleListSerializer(serializers.ModelSerializer):
 
 class ItemPurchaseListSerializer(serializers.ModelSerializer):
     
-    item_purchase = ItemPurchaseSerializer
+    item_purchase = ItemPurchaseSerializer()
     item = ItemSerializer()
     
     class Meta:
