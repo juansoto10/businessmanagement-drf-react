@@ -16,27 +16,27 @@ const Product = (data) => {
   }
 
   return (
-    <div className="text-lg flex flex-col md:flex-row bg-indigo-200 rounded-lg shadow-lg max-w-lg md:max-w-6xl h-min">
+    <div className="text-lg flex flex-col md:flex-row bg-white rounded-lg shadow-complete max-w-lg md:max-w-6xl h-min">
       <img src={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.apasionadosporelcafe.com%2Fwp-content%2Fuploads%2F2020%2F08%2Fshutterstock_540967066-min.jpg&f=1&nofb=1&ipt=6324e6e161ed91fae594a2c8e983281968407bef28b2579910defbca1112269f&ipo=images`} alt="product thumbnail" className="w-full rounded-t-lg md:rounded-r-none md:rounded-l-lg md:w-2/5 md:min-w-[450px]" />
 
-      <div className="flex flex-col p-5 sm:p-6 md:p-3 justify-center items-center md:w-1/2">
-        <h2 className="block text-base text-center text-green drop-shadow-lg font-semibold tracking-wide uppercase">
+      <div className="flex flex-col p-6 md:p-3 justify-center items-center md:w-1/2">
+        <h2 className="block text-base text-center text-azulito drop-shadow-lg font-semibold tracking-wide uppercase">
         {product.category.name}
         </h2>
-        <h1 className="mt-2 mb-6 block text-2xl text-center leading-8 font-extrabold tracking-tight text-purple s:text-3xl md:text-4xl">
+        <h1 className="mt-2 mb-6 block text-2xl text-center leading-8 font-extrabold tracking-tight text-black s:text-3xl md:text-4xl">
         {product.name}
         </h1>
 
         <div className="text-base s:text-lg sm:text-xl">
-          <p className="mb-1">
-            <strong>Price:</strong> {formatPrice(product.current_price)}
-          </p>
-          <p className="mb-1">
-            <strong>Units:</strong> {product.units}
-          </p>
-          <p className="mb-1">
-            <strong>Added:</strong> {formatDate(product.added)}
-          </p>
+          {Object.entries({
+            Price: formatPrice(product.current_price),
+            Units: product.units,
+            Added: formatDate(product.added),
+          }).map(([label, value]) => (
+            <p key={label} className="mb-1">
+              <strong>{label}:</strong> {value}
+            </p>
+          ))}
         </div>
 
         

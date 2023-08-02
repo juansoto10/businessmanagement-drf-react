@@ -50,7 +50,7 @@ function ItemDetail({
     <FullWidthLayout>
       {
         item ?
-        <div className="relative flex flex-col justify-center items-center pt-12 pb-4 px-3 bg-white overflow-hidden md:h-100">
+        <div className="relative flex flex-col justify-center items-center pt-12 pb-4 px-5 bg-white overflow-hidden md:h-100">
 
           <Item data={item} />
 
@@ -58,14 +58,14 @@ function ItemDetail({
 
             <Link
               to={`/`}
-              className="px-1 hover:text-white hover:bg-black transition-colors duration-300"
+              className="px-1 underline underline-offset-[8px] hover:text-white hover:bg-black transition-colors duration-300"
             >
               Home 
             </Link>
 
             <Link
               to={`/items`}
-              className="px-1 hover:text-white hover:bg-black transition-colors duration-300"
+              className="px-1 underline underline-offset-[8px] hover:text-white hover:bg-black transition-colors duration-300"
             >
               Back
             </Link>

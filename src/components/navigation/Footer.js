@@ -87,5 +87,5 @@ const navigation = {
   }
   
 
-  export default Footer;
+  export default Footer
   

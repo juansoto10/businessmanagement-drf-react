@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom'
 
 
 const navigation = [
-  { name: 'Inventory', href: '/polls/categories', current: true },
-  { name: 'Categories', href: '/about', current: false },
+  { name: 'Items', href: '/items', current: false },
+  { name: 'Products', href: '/products', current: false },
 ]
 
 function classNames(...classes) {
@@ -40,7 +40,7 @@ function Navbar() {
       className={({ open }) =>
         classNames(
           open ? 'fixed inset-0 z-40 overflow-y-auto' : '',
-          'bg-purple shadow-sm lg:static lg:overflow-y-visible'
+          'bg-white border-b-2 border-black shadow-sm lg:static lg:overflow-y-visible'
         )
       }
     >
@@ -53,8 +53,8 @@ function Navbar() {
                   <NavLink to="/">
                     <img
                       className="block h-12 w-auto rounded-full"
-                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.famousbirthsdeaths.com%2Fwp-content%2Fuploads%2F2018%2F01%2Fdua-lipa-bio-net-worth-facts.jpg&f=1&nofb=1&ipt=b929bc5d5bf3e8193e6059332fa7ab9e2a1d8cf7cca4416135f51510740fc4f2&ipo=images"
-                      alt="Logo Valkau Polls"
+                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F236x%2Ff9%2Fb9%2Fed%2Ff9b9eda8478771e7ca8d16e6a58fca3d--electric-blue-vivid-colors.jpg&f=1&nofb=1&ipt=a7ca4f34bf998673df06a9d76df640ab5c3c4d0ad93b527892d2c565d588e6c9&ipo=images"
+                      alt="Logo Business Management App"
                     />
                   </NavLink>
                 </div>
@@ -77,7 +77,7 @@ function Navbar() {
                         name="search"
                         required
                         onChange={(e) => {handleChange(e)}}
-                        className="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-green sm:text-sm"
+                        className="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-azulito sm:text-sm"
                         placeholder="Search"
                         type="search"
                       />
@@ -99,12 +99,12 @@ function Navbar() {
               </div>
 
               <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
-                <NavLink to="/polls/categories" className="text-lg dark:hover:text-white hover:text-ivory text-green dark:text-dark-txt text-md font-bold">
-                  Inventory
+                <NavLink to="/items" className="text-lg dark:hover:text-white hover:text-black text-azulito dark:text-dark-txt text-md font-bold">
+                  Items
                 </NavLink>
 
-                <NavLink to="/about" className="mx-4 text-lg dark:hover:text-white hover:text-ivory text-green dark:text-dark-txt text-md font-bold">
-                  Categories
+                <NavLink to="/products" className="mx-4 text-lg dark:hover:text-white hover:text-black text-azulito dark:text-dark-txt text-md font-bold">
+                  Products
                 </NavLink>
               </div>
 
@@ -113,6 +113,7 @@ function Navbar() {
             </div>
           </div>
 
+          {/* Mobile */}
           <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
             <div className="max-w-3xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-4">
               {navigation.map((item) => (
@@ -121,7 +122,7 @@ function Navbar() {
                   to={item.href}
                   aria-current={item.current ? 'page' : undefined}
                   className={classNames(
-                    item.current ? 'bg-gray-100 text-gray-900' : 'hover:bg-gray-50',
+                    item.current ? 'bg-gray-200 text-orange-500' : 'hover:bg-gray-200',
                     'block rounded-md py-2 px-3 text-base font-medium'
                   )}
                 >

@@ -48,7 +48,7 @@ function ProductDetail({
     <FullWidthLayout>
       {
         product ?
-        <div className="relative flex justify-center items-center pt-10 pb-4 px-3 bg-white overflow-hidden md:h-100">
+        <div className="relative flex justify-center items-center pt-10 pb-4 px-5 bg-white overflow-hidden md:h-100">
 
           <Product data={product} />
 

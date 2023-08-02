@@ -29,6 +29,8 @@ module.exports = {
         'green': 'rgb(45 212 191);',
         'misty': '#BFD2D0',
         'purple-mid': '#A084DC',
+        'azulito': '#4E4FEB',
+        'dark-azulito': '#EA5455',
       },
       keyframes: {
         wiggle: {
@@ -64,9 +66,10 @@ module.exports = {
       '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
+      'complete': '2px 2px 17px -7px rgba(0, 0, 0, 0.25)',
     },
     screens: {
-      's': '452px',
+      's': '460px',
 
       'sm': '760px',
       // => @media (min-width: 640px) { ... }
