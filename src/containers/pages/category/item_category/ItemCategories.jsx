@@ -20,8 +20,6 @@ const ItemCategories = ({
 
   return (
     <FullWidthLayout>
-      {/* <Header /> */}
-      {/* <ItemsCategories /> */}
       <ItemCategoriesList get_item_categories={get_item_categories} categories={categories} />
     </FullWidthLayout>
   )

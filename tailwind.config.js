@@ -7,11 +7,11 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        '100': 'calc(100vh - 175px)',
+        '100': 'calc(100vh - 177px)',
       },
       minHeight: {
         'nice': 'calc(100vh - 223px)',
-        'cool': 'calc(100vh - 175px)',
+        'cool': 'calc(100vh - 177px)',
       },
       colors: {
         'dark-main': '#181818',

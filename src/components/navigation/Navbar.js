@@ -40,7 +40,7 @@ function Navbar() {
       className={({ open }) =>
         classNames(
           open ? 'fixed inset-0 z-40 overflow-y-auto' : '',
-          'bg-white border-b-2 border-black shadow-sm lg:static lg:overflow-y-visible'
+          'bg-white border-gray-300 border-b-[1px] lg:static lg:overflow-y-visible'
         )
       }
     >

@@ -8,7 +8,7 @@ const Home = ({
 
   return (
     <FullWidthLayout>
-      <div className="flex flex-col justify-center items-center px-6 pt-10 md:pt-14">
+      <div className="flex flex-col h-100 justify-center items-center px-6 pt-10 md:pt-14">
         <h1 className="text-4xl md:text-5xl font-bold text-azulito mb-10 text-center">Business Management</h1>
 
         <div className="flex flex-col w-3/4 max-w-[320px] sm:grid sm:grid-cols-2 sm:gap-5 sm:max-w-[550px] md:max-w-[750px]">
@@ -53,10 +53,10 @@ const Home = ({
 
             <ul className="md:text-lg">
               <li className="mb-3">
-                <Link to="/categories/item-categories" className="px-1 underline underline-offset-[7px] hover:text-white hover:bg-black transition-colors duration-300">Item Categories</Link>
+                <Link to="/items/categories" className="px-1 underline underline-offset-[7px] hover:text-white hover:bg-black transition-colors duration-300">Item Categories</Link>
               </li>
               <li className="">
-                <Link to="/categories/product-categories" className="px-1 underline underline-offset-[7px] hover:text-white hover:bg-black transition-colors duration-300">Product Categories</Link>
+                <Link to="/products/categories" className="px-1 underline underline-offset-[7px] hover:text-white hover:bg-black transition-colors duration-300">Product Categories</Link>
               </li>
             </ul>
           </section>

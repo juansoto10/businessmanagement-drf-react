@@ -1,6 +1,7 @@
 import LoadingCard from "components/loaders/LoadingCard"
 import SmallSetPagination from "components/pagination/SmallSetPagination"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import ProductCard from "./ProductCard"
 
 
@@ -35,6 +36,24 @@ const ProductsList = ({
                 items_list={products_list}
                 count={count}
               />
+
+              <div className="flex items-center justify-around text-base sm:text-lg md:text-xl mt-10 md:mt-14 w-full">
+
+                {/* <Link
+                  to={`/`}
+                  className="px-1 underline underline-offset-[8px] hover:text-white hover:bg-black transition-colors duration-300"
+                >
+                  Home 
+                </Link> */}
+
+                <Link
+                  to={`/`}
+                  className="px-1 underline underline-offset-[8px] hover:text-white hover:bg-black transition-colors duration-300"
+                >
+                  Back
+                </Link>
+
+              </div>
 
             </div>
           </div>
